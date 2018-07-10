@@ -12,8 +12,9 @@ public class Folder {
     private List<File> files;
     private Owner owner;
 
-    public Folder(String title) {
+    public Folder(String title, Owner owner) {
         this.title = title;
+        this.owner = owner;
     }
 
     public Folder(){
@@ -40,7 +41,7 @@ public class Folder {
         this.title = title;
     }
 
-    @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER)
     public List<File> getFiles(){
         return files;
     }
@@ -49,7 +50,7 @@ public class Folder {
     }
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
+    @JoinColumn(name = "owner", nullable = false)
     public Owner getOwner() {
         return owner;
     }

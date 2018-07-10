@@ -3,6 +3,8 @@ package models;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "owners")
 public class Owner {
 
     private int id;
@@ -17,6 +19,7 @@ public class Owner {
 
     public Owner() {
     }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -44,7 +47,7 @@ public class Owner {
     public void setUsername(String username) {
         this.username = username;
     }
-    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     public List<Folder> getFolders() {
         return folders;
     }
