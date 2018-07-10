@@ -15,6 +15,10 @@ public class Folder {
         this.title = title;
     }
 
+    public Folder(){
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,5 +28,13 @@ public class Folder {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
+    public List<File> getFiles(){
+        return files;
+    }
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 }
