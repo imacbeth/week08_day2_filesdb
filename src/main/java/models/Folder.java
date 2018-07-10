@@ -31,11 +31,30 @@ public class Folder {
         this.id = id;
     }
 
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
     public List<File> getFiles(){
         return files;
     }
     public void setFiles(List<File> files) {
         this.files = files;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
