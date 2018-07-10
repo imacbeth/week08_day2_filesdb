@@ -10,6 +10,7 @@ public class Folder {
     private int id;
     private String title;
     private List<File> files;
+    private Owner owner;
 
     public Folder(String title) {
         this.title = title;
