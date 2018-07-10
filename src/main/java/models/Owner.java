@@ -47,7 +47,7 @@ public class Owner {
     public void setUsername(String username) {
         this.username = username;
     }
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     public List<Folder> getFolders() {
         return folders;
     }
